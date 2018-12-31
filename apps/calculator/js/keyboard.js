@@ -6,3 +6,8 @@ const screen = document.querySelector('.screen');
 const numbers = document.querySelectorAll('.numbers > button');
 const operators = document.querySelectorAll('.operators > button');
 
+numbers.forEach(numBtn => {
+  numBtn.onclick = function() {
+    screen.value += this.textContent;
+  };
+});
