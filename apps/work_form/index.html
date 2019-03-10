@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width">
       <link rel="stylesheet" type="text/css" href="style.css">
       <script src="vue.min.js" defer></script>
+	  <script src="moment.min.js" defer></script>
       <script src="script.js" defer></script>
    </head>
    <body>
@@ -31,6 +32,10 @@
                   <option v-for="mrf in lists.mrfs" :value="mrf">{{mrf}}</option>
                   }
                </select>
+            </div>
+			<div class="message_type">
+               <label>Разница времени с Москвой</label>
+               <input type="number" value="0" v-model="moscowTimeDiff">
             </div>
             <div class="open">
                <label>Начало&nbsp;(<span>МСК</span>):</label>
