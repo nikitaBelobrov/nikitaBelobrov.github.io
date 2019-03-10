@@ -14,7 +14,7 @@
             <div class="message_type">
                <label>Тип&nbsp;оповещения:</label>
                <select class="message_type_select" v-model="msgType" @change="changeMode">
-                  <option v-for="(key, value) in lists.msgTypes" :value="key">{{key}} - {{value}}</option>
+                  <option v-for="(value, key) in lists.msgTypes" :value="key">{{key}} - {{value}}</option>
                </select>
             </div>
             <div class="problem">
