@@ -16,6 +16,7 @@ const vm = new Vue({
 		msgType: '...',
 		probType: '...',
 		mrf: '...',
+		moscowTimeDiff: '0',
 		openDate: '',
 		openTime: '',
 		closeDate: '',
@@ -105,33 +106,27 @@ const vm = new Vue({
 		},
 		openDateObj: function () {
 			if (this.openDate == '' || this.openTime == '') return '';
-			const dateTxt = this.openDate + 'T' + this.openTime;
-			return (new Date(dateTxt));
+			
+			return moment(this.openDate + ' ' + this.openTime,"YYYY-MM-DD HH:mm");
 		},
 		openLocalDate: function () {
 			if (this.openDateObj == '') return '';
-			return (this.openDateObj).toLocaleString().slice(0, -3);
+			
+			return this.openDateObj.format('DD.MM.YYYY HH:mm');
 		},
 		closeDateObj: function () {
 			if (this.closeDate == '' || this.closeTime == '') return '';
-			const dateTxt = this.closeDate + 'T' + this.closeTime;
-			return (new Date(dateTxt));
+			
+			return moment(this.closeDate + ' ' + this.closeTime,"YYYY-MM-DD HH:mm");
 		},
 		closeLocaleDate: function () {
 			if (this.closeDateObj == '') return '';
-			return (this.closeDateObj).toLocaleString().slice(0, -3);
+			return this.closeDateObj.format('DD.MM.YYYY HH:mm');;
 		},
 		moscowDateStamp: function () {
-			const date = new Date();
-			const y = date.getUTCFullYear();
-			const m = date.getUTCMonth();
-			const d = date.getUTCDate();
-			const h = date.getUTCHours();
-			const min = date.getUTCMinutes();
-			const sec = date.getUTCSeconds();
-			console.log((new Date(y, m, d, h + 3, min + 1, sec)));
-
-			return +(new Date(y, m, d, h + 3, min + 1, sec));
+			const moscowTime = moment().subtract(this.moscowTimeDiff, 'hours');
+	
+			return +moscowTime;
 		},
 		result: function () {
 			let str = '';
@@ -215,6 +210,7 @@ const vm = new Vue({
 		saveData: function () {
 			storage.setItem("probType", this.probType);
 			storage.setItem("mrf", this.mrf);
+			storage.setItem("moscowTimeDiff", this.moscowTimeDiff);
 			storage.setItem("openDate", this.openDate);
 			storage.setItem("openTime", this.openTime);
 
@@ -230,5 +226,7 @@ const vm = new Vue({
 vm.probType = storage.getItem('probType') || '...';
 vm.mrf = storage.getItem('mrf') || '...';
 vm.openDate = (new Date()).toLocaleDateString().split('.').reverse().join('-');
+vm.moscowTimeDiff = +storage.getItem("moscowTimeDiff");
+
 
 vm.validateDates();
