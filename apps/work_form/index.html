@@ -73,13 +73,30 @@
             </div>
             <div class="result">
                <label>Результат:</label>
-               <textarea class="result_area" :value="result"></textarea>
+               <textarea class="result_area" id="result" :value="result"></textarea>
             </div>
             <hr>
             <div class="control_panel">
-               <button class="copy_btn" @click="copyResult">Копировать</button>
+               <button class="copy_btn" data-clipboard-action="copy" data-clipboard-target="#result">Копировать</button>
             </div>
          </div>
       </div>
+	  
+	  <script src="clipboard.min.js"></script>
+	  <script>
+		const clip = new ClipboardJS('.copy_btn');
+		clip.on('success', function(e) {
+			const btn = e.trigger;
+		
+			btn.textContent = 'Скопировано';
+			btn.disabled = true;
+			
+			setTimeout(function() {
+				btn.textContent = 'Копировать';
+				btn.disabled = false;
+				e.clearSelection();
+			}, 1000);
+		});
+	</script>
    </body>
 </html>
