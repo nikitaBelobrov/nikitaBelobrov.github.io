@@ -1,1 +1,80 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <meta charset="utf-8">
+      <title>Создать шаблон</title>
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <script src="vue.min.js" defer></script>
+      <script src="script.js" defer></script>
+   </head>
+   <body>
+      <div class="main_container">
+         <div id="app" class="main_form" :data-mode="formMode" :data-valid-open-date="validOpenDate" :data-valid-close-date="validCloseDate" @change="validAndSaveData">
+            <div class="message_type">
+               <label>Тип&nbsp;оповещения:</label>
+               <select class="message_type_select" v-model="msgType" @change="changeMode">
+                  <option v-for="(key, value) in lists.msgTypes" :value="key">{{key}} - {{value}}</option>
+               </select>
+            </div>
+            <div class="problem">
+               <label>Проблема:</label>
+               <select class="problem_type_select" v-model="probType">
+                  <optgroup v-for="key in probTypesSorted" :label="key">
+                     <option v-for="item in lists.probTypes[key]" :value="item">{{item}}</option>
+                  </optgroup>
+               </select>
+            </div>
+            <div class="mrf">
+               <label>МРФ:</label>
+               <select class="mrf_select" v-model="mrf">
+                  <option v-for="mrf in lists.mrfs" :value="mrf">{{mrf}}</option>
+                  }
+               </select>
+            </div>
+            <div class="open">
+               <label>Начало&nbsp;(<span>МСК</span>):</label>
+               <input class="open_date_area" type="date" v-model="openDate" @keyup="validateDates">
+               <input class="open_time_area" type="time" v-model="openTime" @keyup="validateDates">
+            </div>
+            <div class="close">
+               <label>Завершение&nbsp;(<span>МСК</span>):</label>
+               <input class="close_date_area" type="date" v-model="closeDate" @keyup="validateDates">
+               <input class="close_time_area" type="time" v-model="closeTime" @keyup="validateDates">
+            </div>
+            <div class="comment">
+               <label>Комментарий:</label>
+               <textarea class="comment_area" v-model="comment"></textarea>
+            </div>
+            <div class="reason">
+               <label>Причина:</label>
+               <textarea class="reason_area" v-model="reason"></textarea>
+            </div>
+            <div class="queue">
+               <label>Очередь:</label>
+               <input type="text" class="queue_area" v-model="queue">
+            </div>
+            <div class="resolve_time">
+               <label>Срок&nbsp;восстановления:</label>
+               <input type="text" class="resolve_time_area" v-model="resolveTime">
+            </div>
+            <div class="sl_hour">
+               <label>SL&nbsp;в&nbsp;часе:</label>
+               <input type="text" class="sl_hour_area" v-model="SLHour">
+            </div>
+            <div class="capacity_hour">
+               <label>Превышение&nbsp;нагрузки&nbsp;в&nbsp;часе:</label>
+               <input type="text" class="capacity_hour_area" v-model="capacityHour">
+            </div>
+            <div class="result">
+               <label>Результат:</label>
+               <textarea class="result_area" :value="result"></textarea>
+            </div>
+            <hr>
+            <div class="control_panel">
+               <button class="copy_btn" @click="copyResult">Копировать</button>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
