@@ -1,0 +1,155 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+button {
+	padding: .5em;
+	cursor: pointer;
+	display: block;
+	width: 150px;
+	height: 40px;
+	max-width: 100%;
+	background-color: white;
+	border: 1px solid grey;
+	border-radius: 5px;
+}
+
+button:hover {
+	opacity: .7;
+}
+
+option {
+	line-height: 20px;
+}
+
+input,
+textarea {
+	max-width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	outline: none;
+}
+
+.main_container {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: auto;
+}
+
+.main_form {
+	width: 600px;
+	max-height: 100%;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 10px 20px;
+	position: relative;
+	overflow: auto;
+}
+
+.main_form>div {
+	padding: 5px;
+}
+
+.main_form label {
+	display: block;
+}
+
+.main_form select,
+.main_form input,
+.main_form textarea {
+	width: 100%;
+	border: 1px solid grey;
+	border-radius: 3px;
+	padding: 5px;
+	font-size: 15px;
+	line-height: 15px;
+	resize: none;
+}
+
+.main_form select,
+.main_form input {
+	height: 30px;
+}
+
+.main_form select:not(.problem_type_select) optgroup[label="..."],
+.main_form select:not(.problem_type_select) option[value="..."] {
+	display: none;
+}
+
+.main_form input[type="date"] {
+	width: 49%;
+}
+
+.main_form input[type="time"] {
+	width: 49%;
+}
+
+.main_form[data-mode="FAIL"] div.close,
+.main_form[data-mode="FAIL"] div.resolve_time,
+.main_form[data-mode="FAIL"] div.sl_hour,
+.main_form[data-mode="FAIL"] div.capacity_hour {
+	opacity: .5;
+}
+
+.main_form[data-mode="UP"] div.close {
+	opacity: .5;
+}
+
+.main_form[data-mode="DONE"] div.resolve_time,
+.main_form[data-mode="DONE"] div.queue,
+.main_form[data-mode="DONE"] div.sl_hour,
+.main_form[data-mode="DONE"] div.capacity_hour {
+	opacity: .5;
+}
+
+.main_form[data-valid-open-date="no"] div.open input,
+.main_form[data-valid-close-date="no"] div.close input {
+	border: 2px solid red;
+}
+
+.main_form[data-valid-open-date="no"] div.open span,
+.main_form[data-valid-close-date="no"] div.close span {
+	color: red;
+}
+
+.comment_area {
+	height: 65px;
+}
+
+.reason_area {
+	height: 45px;
+}
+
+.result_area {
+	width: 100%;
+	height: 300px;
+	border: 1px solid grey;
+	border-radius: 3px;
+	font-size: 15px;
+	line-height: 17px;
+	padding: 10px;
+	resize: none;
+}
+
+.control_panel {
+	margin-top: 15px;
+	width: 100%;
+	position: relative;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.greenOutline {
+	outline: 2px solid green;
+}
