@@ -221,6 +221,12 @@ const vm = new Vue({
 		validAndSaveData: function () {
 			this.validateDates();
 			this.saveData();
+		},
+		disableCopy: function(e) {
+			if (this.validOpenDate === 'no' || this.validCloseDate === 'no') {
+				alert('По всей видимости вы указали не московское время, для копирования необходимо исправить!');
+				e.preventDefault();
+			}
 		}
 	}
 });
