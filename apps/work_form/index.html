@@ -10,7 +10,7 @@
       <script src="script.js" defer></script>
    </head>
    <body>
-      <div class="main_container">
+      <div class="main_container" @copy="disableCopy">
          <div id="app" class="main_form" :data-mode="formMode" :data-valid-open-date="validOpenDate" :data-valid-close-date="validCloseDate" @change="validAndSaveData">
             <div class="message_type">
                <label>Тип&nbsp;оповещения:</label>
