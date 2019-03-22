@@ -11,7 +11,7 @@
    </head>
    <body>
       <div class="main_container">
-         <div id="app" class="main_form" :data-mode="formMode" :data-valid-open-date="validOpenDate" :data-valid-close-date="validCloseDate" @change="validAndSaveData" @copy="disableCopy">
+         <div id="app" class="main_form" :data-mode="formMode" :data-valid-open-date="validOpenDate" :data-valid-close-date="validCloseDate" @change="validAndSaveData">
             <div class="message_type">
                <label>Тип&nbsp;оповещения:</label>
                <select class="message_type_select" v-model="msgType" @change="changeMode">
@@ -73,7 +73,7 @@
             </div>
             <div class="result">
                <label>Результат:</label>
-               <textarea class="result_area" id="result" :value="result"></textarea>
+               <textarea class="result_area" id="result" :value="result" @copy="disableCopy"></textarea>
             </div>
             <hr>
             <div class="control_panel">
