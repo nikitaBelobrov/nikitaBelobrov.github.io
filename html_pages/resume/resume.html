@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Резюме</title>
+        <style>
+            html {
+                padding: 10px;
+            }
+
+            body {
+                width: 800px;
+                padding: 30px;
+                margin: 0 auto;
+                font-size: 1.1rem;
+                outline: 1px solid black;
+            }
+            
+            fieldset + fieldset {
+                margin-top: 15px;
+            }
+
+            fieldset > legend {
+                color: DodgerBlue;
+                font-weight: bold;
+                font-style: italic;
+            }
+
+            h1, h3 {
+                color: DodgerBlue;
+            }
+            .target_position {
+                font-style: italic;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <fieldset>
+            <h1>Белобров Никита Игоревич</h1>
+            <h3 class="target_position">Junior тестировщик</h3>
+            <p>
+                Изучаю Тестирование ПО и Python3.<br>
+                Кодер любитель, обладающий хорошим <em>критическим мышлением</em>.
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Общая информация</legend>
+            <div>
+                <p>
+                    <b>Эл. почта:</b>   
+                    <span>
+                        <a href="mailto:nik.belobrov2018@gmail.com">nik.belobrov2018@gmail.com</a>
+                    </span>
+                </p>
+                <p>
+                    <b>Телефон:</b> 
+                    <span>+7 (916) 789-90-00</span>
+                </p>
+                <p>
+                    <b>Адрес:</b> 
+                    <span>
+                        г. Москва, ЮАО (м. Каширская, Нагатинская)
+                    </span>
+                </p>
+                <p>
+                    <b>Возраст:</b> 
+                    <span class="my_age"></span>
+                </p>
+                <p>
+                    <b>Образование:</b> 
+                    <span>Среднее</span>
+                </p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Профессиональные навыки</legend>
+            <ul>
+                <li>Работа с программами MS Office</li>
+                <li>Навыки <em>деловой переписки</em></li>
+                <li>Составление инструкций</li>
+            </ul>
+            <p>Также имею опыт <em>ручного тестирования</em> собственных скриптов (JS) и браузерных расширений.</p>
+        </fieldset>
+        <fieldset>
+            <legend>Знание технологий</legend>
+            <ul>
+                <li>JavaScript: базовый</li>
+                <li>Python3: базовый</li>
+                <li>HTML, CSS: базовый</li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>Хобби</legend>
+            <p>В свободное время смотрю <i>аниме</i>, кинообзоры, читаю <i>мангу</i>, а также играю в компьютерные игры.</p>
+        </fieldset>
+
+        <script>
+            const current_date = new Date();
+            const cur_year = current_date.getFullYear();
+
+            const birthday = new Date(1989, 0, 25);
+            const b_d = birthday.getDate();
+            const b_m = birthday.getMonth();
+            const b_y = birthday.getFullYear();
+
+            const cur_year_birthday = new Date(cur_year, b_m, b_d);
+
+            // Возраст, в зависимости от того, был ли ДР в этом году
+            const age = (current_date >= cur_year_birthday) ? (cur_year - b_y) : (cur_year - b_y - 1);
+
+            document.querySelector('.my_age').textContent = age;
+        </script>
+    </body>
+</html>
